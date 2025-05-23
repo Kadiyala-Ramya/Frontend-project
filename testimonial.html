@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Page</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+   font-family: Arial, sans-serif;
+   overflow-x: hidden;
+  }
+ .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 0 20px;
+  height: 70px;
+  background-color: white;
+  font-size: large;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  background-color: #EAA636;
+  color: white;
+  font-size: 2.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  height: 100%;
+  line-height: 70px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #EAA636;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  width: 160px;
+  padding: 10px;
+  top: 100%;
+  left: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 0;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #EAA636;
+}
+
+.main {
+  background-color: rgb(245, 237, 227);
+  width: 100%;
+  min-height: 80vh;
+  padding: 150px 50px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.content {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.head {
+  font-size: 60px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.para {
+  padding-top: 20px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+}
+
+.img {
+  width: 50%;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.img1,
+.img4 {
+  border: 15px solid white;
+  flex: 1;
+  max-width: 250px;
+}
+
+.img img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.main7 {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 50px;
+}
+
+.head7 {
+  color: #EAA636;
+  font-size: 17px;
+  text-align: center;
+  padding-top: 20px;
+  letter-spacing: 1px;
+}
+
+.para17 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 40px;
+  padding-top: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.cnt {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.cnt:hover {
+  background-color: #EAA636;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(234, 166, 54, 0.2);
+}
+
+.cnt:hover .rev-content p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.img-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rev-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #EAA636;
+  margin-right: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.rev-content h3,
+.rev-content p {
+  margin: 0;
+}
+
+.rev-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.rev-content p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.rev-para {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.7);
+}
+
+.cnt:hover .rev-para {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer {
+  width: 100%;
+  background-color: #1E1916;
+  color: grey;
+  margin-top: 80px;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer1, .footer2 {
+  width: 50%;
+  padding: 40px;
+  box-sizing: border-box;
+  border: 0.1px solid grey;
+}
+
+.head8 {
+  color: #EAA636;
+  font-size: 45px;
+  font-family: 'Times New Roman', Times, serif;
+  padding-top: 20px;
+}
+
+.para18 {
+  padding-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.icon1, .icon2, .icon3 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.para19 {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.social1 {
+  display: flex;
+  color: #EAA636;
+  gap: 15px;
+  padding-top: 30px;
+  font-size: 25px;
+}
+
+.social1 ion-icon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social1 ion-icon:hover {
+  color: white;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.link1, .link2 {
+  flex: 1;
+  min-width: 200px;
+}
+
+.links h2 {
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.arrow-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.arrow-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.arrow-list li:hover {
+  color: #EAA636;
+}
+
+.arrow-list li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: grey;
+  font-weight: bold;
+}
+
+.footer3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  flex-wrap: wrap;
+  background-color: #1E1916;
+  border-top: 1px solid #444;
+}
+
+.para20, .para21 {
+  color: white;
+  margin: 0;
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  #menu-toggle:checked + .menu-icon + .nav-links {
+    display: flex;
+  }
+  
+  .dropdown-content {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    padding-left: 15px;
+    width: 100%;
+    display: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .main {
+    flex-direction: column;
+    padding: 100px 20px 30px;
+    max-height: auto;
+  }
+  
+  .content {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .head {
+    font-size: 40px;
+    margin-top: 20px;
+  }
+
+  .para {
+    font-size: 16px;
+  }
+
+  .img {
+    width: 100%;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .img1,
+  .img4 {
+    max-width: 200px;
+    border-width: 10px;
+  }
+
+  .img img {
+    height: 250px;
+  }
+
+  .main7 {
+    padding: 50px 15px 30px;
+  }
+
+  .head7 {
+    padding-top: 0;
+    font-size: 16px;
+  }
+
+  .para17 {
+    font-size: 28px;
+    padding: 15px 0;
+    margin-bottom: 30px;
+  }
+
+  .reviews {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .cnt {
+    padding: 25px;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .img-content {
+    margin-bottom: 15px;
+  }
+
+  .rev-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+  }
+
+  .rev-content h3 {
+    font-size: 16px;
+  }
+
+  .rev-content p {
+    font-size: 13px;
+  }
+
+  .rev-para {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .footer1, .footer2 {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: left;
+  }
+
+  .head8 {
+    font-size: 32px;
+    padding-top: 10px;
+  }
+
+  .para18 {
+    font-size: 16px;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .link1, .link2 {
+    margin-top: 20px;
+  }
+
+  .links h2 {
+    font-size: 20px;
+  }
+
+  .social1 {
+    justify-content: left;
+    font-size: 30px;
+  }
+
+  .footer3 {
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    padding: 20px;
+  }
+
+  .para20, .para21 {
+    font-size: 13px;
+  }
+}
+    </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">Photozone</div>
+  
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  
+    <div class="nav-links">
+      <div><a href="project2.html" style="color:#EAA636">Home</a></div>
+      <div><a href="about.html"><b>About</b></a></div>
+      <div><a href="services.html"><b>Services</b></a></div>
+      <div><a href="projects.html"><b>Projects</b></a></div>
+      <div class="dropdown">
+        <a href="#"><b>Pages ▾</b></a>
+        <div class="dropdown-content">
+          <a href="features.html">Features</a>
+          <a href="ourteam.html">Our Team</a>
+          <a href="testimonial.html">Testimonial</a>
+          <a href="error.html">404 Page</a>
+        </div>
+      </div>
+      <div><a href="contact.html"><b>Contact</b></a></div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="content">
+      <div class="head"><p><b>Testimonial</b></p></div>
+      <div class="para">
+        <p>
+          <span style="color:#EAA636">Home</span> /
+          <span style="color:#EAA636">Pages</span> /
+          Testimonial
+        </p>
+      </div>
+    </div>
+    <div class="img">
+      <div class="img1">
+        <img src="https://i.pinimg.com/736x/ca/d3/46/cad3466cb9912e54712ce36e9236a9a1.jpg" alt="Project 1">
+      </div>
+      <div class="img4">
+        <img src="https://i.pinimg.com/736x/2c/98/50/2c98508ea40633c0ef4bdb91050f44c6.jpg" alt="Project 2">
+      </div>
+    </div>
+  </div>
+  <div class="main7">
+  <div class="head7">CLIENT'S REVIEW</div>
+  <div class="para17"><b>More Than 20000+ Customers Trusted Us</b></div>
+  <div class="reviews">
+    <div class="cnt c1">
+      <div class="img-content">
+        <img class="rev-image" src="https://demo.htmlcodex.com/2586/photo-studio-website-template/img/testimonial-4.jpg">
+        <div class="rev-content">
+          <h3>Sarah Johnson</h3>
+          <p>Wedding Photographer</p>
+        </div>
+      </div>
+      <div class="rev-para">
+        "Amazing service! The team exceeded our expectations with their creativity and professionalism. Every moment was captured beautifully and we couldn't be happier with the results."
+      </div>
+    </div>
+
+    <div class="cnt c2">
+      <div class="img-content">
+        <img class="rev-image" src="https://demo.htmlcodex.com/2586/photo-studio-website-template/img/testimonial-3.jpg">
+        <div class="rev-content">
+          <h3>Michael Chen</h3>
+          <p>Business Owner</p>
+        </div>
+      </div>
+      <div class="rev-para">
+        "Professional, punctual, and passionate about their work. The portfolio shots they created for our company have significantly improved our brand image. Highly recommended!"
+      </div>
+    </div>
+
+    <div class="cnt c3">
+      <div class="img-content">
+        <img class="rev-image" src="https://demo.htmlcodex.com/2586/photo-studio-website-template/img/testimonial-1.jpg">
+        <div class="rev-content">
+          <h3>Emily Rodriguez</h3>
+          <p>Fashion Model</p>
+        </div>
+      </div>
+      <div class="rev-para">
+        "Incredible attention to detail and artistic vision. They made me feel comfortable throughout the shoot and delivered stunning images that perfectly captured my personality."
+      </div>
+    </div>
+  </div>
+</div>
+   <div class="footer">
+    <div class="footer-top">
+      <div class="footer1">
+        <div class="head8">Photozone</div>
+        <div class="para18">
+          <p>Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
+        </div>
+        <div><ion-icon class="icon1" name="location-outline"></ion-icon><p class="para19">123 Street, Hyderabad, INDIA</p></div>
+        <div><ion-icon class="icon2" name="call-outline"></ion-icon><p class="para19">+012 345 67890</p></div>
+        <div><ion-icon class="icon3" name="mail-outline"></ion-icon><p class="para19">info@example.com</p></div>
+        <div class="social1">
+          <ion-icon name="logo-twitter"></ion-icon>
+          <ion-icon name="logo-facebook"></ion-icon>
+          <ion-icon name="logo-linkedin"></ion-icon>
+          <ion-icon name="logo-instagram"></ion-icon>
+        </div>
+      </div>
+  
+      <div class="footer2">
+        <div class="links">
+          <div class="link1">
+            <h2>Quick Links</h2>
+            <ul class="arrow-list">
+              <li>About Us</li>
+              <li>Contact Us</li>
+              <li>Our Services</li>
+              <li>Terms & Conditions</li>
+              <li>Support</li>
+            </ul>
+          </div>
+          <div class="link2">
+            <h2>Popular Links</h2>
+            <ul class="arrow-list">
+              <li>About Us</li>
+              <li>Contact Us</li>
+              <li>Our Services</li>
+              <li>Terms & Conditions</li>
+              <li>Support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer3">
+      <div class="footer3-part1">
+        <p class="para20">© <span style="color:#EAA636">Your Site Name.</span> All Rights Reserved.</p>
+      </div>
+      <div class="footer3-part2">
+        <p class="para21">© <span style="color:white">Designed by</span> <span style="color:#EAA636;">HTML Codex</span></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
